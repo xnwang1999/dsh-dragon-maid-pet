@@ -1,0 +1,30 @@
+{
+  "name": "dsh-dragon-maid-pet",
+  "version": "1.0.2",
+  "type": "module",
+  "description": "Dragon Maid: a desk pet that changes form with the model's reasoning effort (Dragon / Claude / DeepSeek maids), plus reasoning-effort presets for custom models in Settings → Models.",
+  "license": "MIT",
+  "author": "ouchoops",
+  "repository": { "type": "git", "url": "git+https://github.com/xnwang1999/dsh-dragon-maid-pet.git" },
+  "homepage": "https://github.com/xnwang1999/dsh-dragon-maid-pet#readme",
+  "bugs": { "url": "https://github.com/xnwang1999/dsh-dragon-maid-pet/issues" },
+  "keywords": ["dsh", "deepseek-harness", "plugin", "desk-pet", "companion", "reasoning-effort", "龙女仆", "桌宠"],
+  "dependencies": { "@deepseek-ai/schemastery": "~3.18.5" },
+  "engines": { "dsh": ">=0.2.1-rc.5 <0.3.0" },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.png"
+  },
+  "files": ["index.js", "client.js", "logic.js", "artwork.js", "reasoning-effort.js", "client-body.js", "scripts/build.mjs", "cordis.patch.yml", "locale/*.json", "icon.png", "assets/*.png", "assets/*/*.webp", "README.md", "LICENSE"],
+  "scripts": { "build": "node scripts/build.mjs" },
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": ["@deepseek-ai/dsh-client-ui-conversation", "@deepseek-ai/dsh-client-ui-model-selection", "@deepseek-ai/dsh-client-ui-layout", "@deepseek-ai/dsh-client-locale", "@deepseek-ai/dsh-api-remotes", "@deepseek-ai/dsh-client-ui-plugin-manager", "@deepseek-ai/dsh-client-ui-settings"]
+    }
+  }
+}

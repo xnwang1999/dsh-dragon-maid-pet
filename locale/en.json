@@ -1,0 +1,24 @@
+{
+    "meta":  {
+                 "title": "Dragon Maid",
+                 "description":  "Dragon Maid changes form with your model's reasoning effort."
+             },
+    "config":  {
+                   "name":  "Maid name; empty uses the default name.",
+                   "followModels":  "Wildcard patterns of the models the maid follows, e.g. gpt*, claude-*, provider/model.",
+                   "illustrations":  {
+                                         "$desc":  "Custom illustration per form (image URL or data URL); empty keeps the built-in artwork.",
+                                         "low":  "Sleepy hatchling",
+                                         "medium":  "Apprentice maid",
+                                         "high":  "Graceful maid",
+                                         "xhigh":  "Starlight maid",
+                                         "max":  "Divine dragon maid"
+                                     },
+                   "width":  "Pet width in pixels.",
+                   "visible":  "Show the maid in the conversation.",
+                   "showCaption":  "Show the name and form caption.",
+                   "stage":  "Displayed form: auto follows the reasoning effort.",
+                   "divineGlow":  "Animate the divine radiance of the max form.",
+                   "character":  "Character: auto picks the Claude maid for claude models, the DeepSeek maid for deepseek models, otherwise the dragon maid."
+               }
+}

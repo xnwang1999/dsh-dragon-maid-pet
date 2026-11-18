@@ -1,0 +1,24 @@
+{
+    "meta":  {
+                 "title": "龙女仆",
+                 "description":  "龙女仆会随模型的思考强度变化形态。"
+             },
+    "config":  {
+                   "name":  "女仆名字，留空使用默认名字。",
+                   "followModels":  "龙女仆跟随的模型通配规则，如 gpt*、claude-*、供应商/模型。",
+                   "illustrations":  {
+                                         "$desc":  "每个形态的自定义插画（图片链接或 data URL），留空使用内置立绘。",
+                                         "low":  "迷糊幼龙",
+                                         "medium":  "见习女仆",
+                                         "high":  "优雅女仆",
+                                         "xhigh":  "星辉女仆",
+                                         "max":  "神辉龙姬"
+                                     },
+                   "width":  "桌宠宽度（像素）。",
+                   "visible":  "在对话中显示龙女仆。",
+                   "showCaption":  "显示名字与形态说明。",
+                   "stage":  "显示形态：auto 表示跟随推理档位。",
+                   "divineGlow":  "最高档神性光辉动画。",
+                   "character":  "形象：auto 按模型选择——claude 模型为 Claude 女仆，deepseek 模型为 DeepSeek 女仆，其余为龙女仆。"
+               }
+}

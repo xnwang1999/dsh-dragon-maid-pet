@@ -1,6 +1,6 @@
 {
   "name": "dsh-dragon-maid-pet",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "description": "Dragon Maid: a desk pet that changes form with the model's reasoning effort (Dragon / Claude / DeepSeek maids), plus reasoning-effort presets for custom models in Settings → Models.",
   "license": "MIT",

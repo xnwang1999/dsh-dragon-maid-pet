@@ -28,6 +28,11 @@ export const inject = ['webServer'];
 export async function apply(ctx) {
   const clients = new Set();
   const assetDir = new URL('./assets/', import.meta.url);
+  // The host's own request gate: `undefined` admits the request, a status code
+  // (401 / 403) refuses it. Looked up per request and optionally, so a host that
+  // exposes no `connection` service still loads the plugin — there is nothing to
+  // enforce on such a host, and requiring the service would keep it from starting.
+  const rejection = request => ctx.get?.('connection')?.requestRejection?.(request);
   const revision = () => String(Date.now());
   let currentRevision = revision();
   let debounce;
@@ -64,6 +69,14 @@ export async function apply(ctx) {
   ctx.effect(() => ctx.webServer.register({
     kind: 'prefix', path: '/dragon-maid-pet/',
     async handler(req, res) {
+      const refused = rejection(req);
+      if (refused !== undefined) {
+        res.writeHead(refused, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+        res.end(req.method === 'HEAD' ? undefined : JSON.stringify({
+          error: 'This request came from an untrusted origin or needs a DSH login. / 请求来自不受信任的来源，或需要先登录 DSH。',
+        }));
+        return;
+      }
       if (!['GET', 'HEAD'].includes(req.method)) {
         res.writeHead(405, { Allow: 'GET, HEAD' }); res.end(); return;
       }
